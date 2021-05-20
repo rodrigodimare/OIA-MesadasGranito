@@ -19,6 +19,17 @@ public class app {
             pilaMesada.apilarMesada(new Mesada(anchoMesada,largoMesada));
             i++;
         }
+        br.close();
+        //Descomentar para ver el mensaje por consola.
         System.out.println(pilaMesada.contarElementosLista());
+
+        File file = new File("mesadas.out");
+        if (!file.exists()) {
+            file.createNewFile();//Crear archivo.
+        }
+        FileWriter fw = new FileWriter(file);
+        BufferedWriter bw = new BufferedWriter(fw);
+        bw.write(Integer.toString(pilaMesada.contarElementosLista()));
+        bw.close();
     }
 }
